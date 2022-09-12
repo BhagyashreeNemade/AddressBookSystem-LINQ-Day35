@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 
 namespace AddressBookSystem
@@ -51,6 +52,14 @@ namespace AddressBookSystem
                 Console.WriteLine();
             }
             Console.WriteLine();
+        }
+
+        public DataTable EditContactWithName(string firstName, string lastName, DataTable table)
+        {
+            var record = table.AsEnumerable().Where(r => (r.Field<string>("first_name") == firstName && r.Field<string>("last_name") == lastName)).FirstOrDefault();
+            if (record != null)
+                record["phone_number"] = "8989XXXXXX";
+            return table;
         }
     }
 }
