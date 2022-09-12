@@ -182,5 +182,24 @@ namespace AddressBookSystem
                 Console.WriteLine();
             }
         }
+
+        /// <summary>
+        /// UC10
+        /// Prints the count by type.
+        /// </summary>
+        /// <param name="table">The table.</param>
+        public void PrintSizeByType(DataTable table)
+        {
+            var record = table.AsEnumerable().GroupBy(r => (r["type"])).Select(r => (new { type = r.Key, count = r.Count() }));
+            Console.Write("{0,-15}", "type");
+            Console.Write("{0,-15}", "count");
+            Console.WriteLine();
+            foreach (var contact in record)
+            {
+                Console.Write("{0,-15}", contact.type);
+                Console.Write("{0,-15}", contact.count);
+                Console.WriteLine();
+            }
+        }
     }
 }
