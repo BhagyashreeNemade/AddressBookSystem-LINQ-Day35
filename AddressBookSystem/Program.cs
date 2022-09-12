@@ -7,7 +7,7 @@ namespace AddressBookSystem
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Address Book System!");
+            Console.WriteLine("Welcome to Address Book System!\n");
             AddressBook addressBook = new AddressBook();
             DataTable table = addressBook.GetAddressBook();
             addressBook.PrintDataTable(table);
