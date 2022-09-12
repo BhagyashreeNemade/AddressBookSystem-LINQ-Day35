@@ -10,8 +10,7 @@ namespace AddressBookSystem
             Console.WriteLine("Welcome to Address Book System!\n");
             AddressBook addressBook = new AddressBook();
             DataTable table = addressBook.GetAddressBook();
-            addressBook.PrintSizeByCity("Auston", table);
-            addressBook.PrintSizeByState("NYC", table);
+            addressBook.SortDetailsByNameForGivenCity("New York", table);
         }
     }
 }

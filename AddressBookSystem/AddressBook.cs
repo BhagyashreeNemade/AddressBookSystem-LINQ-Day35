@@ -144,5 +144,37 @@ namespace AddressBookSystem
             var record = table.AsEnumerable().Where(r => (r.Field<string>("state") == state)).Count();
             Console.WriteLine($"Count of contacts with state {state}: " + record);
         }
+
+        /// <summary>
+        /// UC8
+        /// Sorts the details by name for given city.
+        /// </summary>
+        /// <param name="city">The city.</param>
+        /// <param name="table">The table.</param>
+        public void SortDetailsByNameForGivenCity(string city, DataTable table)
+        {
+            var record = table.AsEnumerable().OrderBy(r => (r["first_name"], r["last_name"])).Where(r => ((string)r["city"] == city));
+            Console.Write("{0,-15}", "first_name");
+            Console.Write("{0,-15}", "last_name");
+            Console.Write("{0,-15}", "address");
+            Console.Write("{0,-15}", "city");
+            Console.Write("{0,-15}", "state");
+            Console.Write("{0,-15}", "zip");
+            Console.Write("{0,-15}", "phone_number");
+            Console.Write("{0,-15}", "email");
+            Console.WriteLine();
+            foreach (var contact in record)
+            {
+                Console.Write("{0,-15}", contact.Field<string>("first_name"));
+                Console.Write("{0,-15}", contact.Field<string>("last_name"));
+                Console.Write("{0,-15}", contact.Field<string>("address"));
+                Console.Write("{0,-15}", contact.Field<string>("city"));
+                Console.Write("{0,-15}", contact.Field<string>("state"));
+                Console.Write("{0,-15}", contact.Field<string>("zip"));
+                Console.Write("{0,-15}", contact.Field<string>("phone_number"));
+                Console.Write("{0,-15}", contact.Field<string>("email"));
+                Console.WriteLine();
+            }
+        }
     }
 }
