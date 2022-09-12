@@ -27,6 +27,7 @@ namespace AddressBookSystem
             table.Rows.Add("Ross", "Geller", "90 Bedford St", "New York", "NYC", "10014", "NA", "ross@geller.co", "corporate", "family");
             table.Rows.Add("Phoebe", "Buffay", "90 Bedford St", "Auston", "Texas", "10014", "NA", "phoebe@buffay.co", "drama", "friend");
             table.Rows.Add("Chandler", "Bing", "90 Bedford St", "New York", "NYC", "10014", "NA", "chandler@bing.co", "corporate", "friend");
+            table.Rows.Add("Rachel", "Green", "90 Bedford St", "New Jersy", "NJC", "10014", "NA", "rach@green.co", "hospitality", "family");
             return table;
         }
 
