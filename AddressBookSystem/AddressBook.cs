@@ -39,26 +39,50 @@ namespace AddressBookSystem
             Console.Write("{0,-15}", "phone_number");
             Console.Write("{0,-15}", "email");
             Console.WriteLine();
-            foreach (DataRow row in table.AsEnumerable())
+            foreach (DataRow contact in table.AsEnumerable())
             {
-                Console.Write("{0,-15}", row.Field<string>("first_name"));
-                Console.Write("{0,-15}", row.Field<string>("last_name"));
-                Console.Write("{0,-15}", row.Field<string>("address"));
-                Console.Write("{0,-15}", row.Field<string>("city"));
-                Console.Write("{0,-15}", row.Field<string>("state"));
-                Console.Write("{0,-15}", row.Field<string>("zip"));
-                Console.Write("{0,-15}", row.Field<string>("phone_number"));
-                Console.Write("{0,-15}", row.Field<string>("email"));
+                Console.Write("{0,-15}", contact.Field<string>("first_name"));
+                Console.Write("{0,-15}", contact.Field<string>("last_name"));
+                Console.Write("{0,-15}", contact.Field<string>("address"));
+                Console.Write("{0,-15}", contact.Field<string>("city"));
+                Console.Write("{0,-15}", contact.Field<string>("state"));
+                Console.Write("{0,-15}", contact.Field<string>("zip"));
+                Console.Write("{0,-15}", contact.Field<string>("phone_number"));
+                Console.Write("{0,-15}", contact.Field<string>("email"));
                 Console.WriteLine();
             }
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// UC4
+        /// Edits the name of the contact with.
+        /// </summary>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="table">The table.</param>
+        /// <returns></returns>
         public DataTable EditContactWithName(string firstName, string lastName, DataTable table)
         {
             var record = table.AsEnumerable().Where(r => (r.Field<string>("first_name") == firstName && r.Field<string>("last_name") == lastName)).FirstOrDefault();
             if (record != null)
                 record["phone_number"] = "8989XXXXXX";
+            return table;
+        }
+
+        /// <summary>
+        /// UC5
+        /// Deletes the name of the contact with.
+        /// </summary>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="table">The table.</param>
+        /// <returns></returns>
+        public DataTable DeleteContactWithName(string firstName, string lastName, DataTable table)
+        {
+            var record = table.AsEnumerable().Where(r => (r.Field<string>("first_name") == firstName && r.Field<string>("last_name") == lastName)).FirstOrDefault();
+            if (record != null)
+                record.Delete();
             return table;
         }
     }
