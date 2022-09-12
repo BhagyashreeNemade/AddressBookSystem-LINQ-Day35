@@ -10,7 +10,7 @@ namespace AddressBookSystem
             Console.WriteLine("Welcome to Address Book System!\n");
             AddressBook addressBook = new AddressBook();
             DataTable table = addressBook.GetAddressBook();
-            addressBook.SortDetailsByNameForGivenCity("New York", table);
+            addressBook.PrintDataTable(table);
         }
     }
 }
