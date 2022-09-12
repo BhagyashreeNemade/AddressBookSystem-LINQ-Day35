@@ -19,11 +19,11 @@ namespace AddressBookSystem
             table.Columns.Add("zip", typeof(string));
             table.Columns.Add("phone_number", typeof(string));
             table.Columns.Add("email", typeof(string));
-            table.Rows.Add("Rachel", "Green", "90 Bedford St", "New York", "NYC", "10014", "NA", "rach@green.co");
-            table.Rows.Add("Joey", "Tribbiani", "90 Bedford St", "New York", "NYC", "10014", "NA", "joe@tribbiani.co");
-            table.Rows.Add("Monica", "Geller", "90 Bedford St", "New York", "NYC", "10014", "NA", "mon@geller.co");
+            table.Rows.Add("Rachel", "Green", "90 Bedford St", "New Jersy", "NJC", "10014", "NA", "rach@green.co");
+            table.Rows.Add("Joey", "Tribbiani", "90 Bedford St", "Auston", "Texas", "10014", "NA", "joe@tribbiani.co");
+            table.Rows.Add("Monica", "Geller", "90 Bedford St", "New Jersy", "NJC", "10014", "NA", "mon@geller.co");
             table.Rows.Add("Ross", "Geller", "90 Bedford St", "New York", "NYC", "10014", "NA", "ross@geller.co");
-            table.Rows.Add("Phoebe", "Buffay", "90 Bedford St", "New York", "NYC", "10014", "NA", "phoebe@buffay.co");
+            table.Rows.Add("Phoebe", "Buffay", "90 Bedford St", "Auston", "Texas", "10014", "NA", "phoebe@buffay.co");
             table.Rows.Add("Chandler", "Bing", "90 Bedford St", "New York", "NYC", "10014", "NA", "chandler@bing.co");
             return table;
         }
@@ -84,6 +84,41 @@ namespace AddressBookSystem
             if (record != null)
                 record.Delete();
             return table;
+        }
+
+
+        /// <summary>
+        /// UC6
+        /// Retrieves thecontact from state or city.
+        /// </summary>
+        /// <param name="city">The city.</param>
+        /// <param name="state">The state.</param>
+        /// <param name="table">The table.</param>
+        public void RetrieveContactFromCityOrState(string city, string state, DataTable table)
+        {
+            var record = table.AsEnumerable().Where(r => (r.Field<string>("city") == city || r.Field<string>("state") == state));
+            Console.Write("{0,-15}", "first_name");
+            Console.Write("{0,-15}", "last_name");
+            Console.Write("{0,-15}", "address");
+            Console.Write("{0,-15}", "city");
+            Console.Write("{0,-15}", "state");
+            Console.Write("{0,-15}", "zip");
+            Console.Write("{0,-15}", "phone_number");
+            Console.Write("{0,-15}", "email");
+            Console.WriteLine();
+            foreach (var contact in record)
+            {
+                Console.Write("{0,-15}", contact.Field<string>("first_name"));
+                Console.Write("{0,-15}", contact.Field<string>("last_name"));
+                Console.Write("{0,-15}", contact.Field<string>("address"));
+                Console.Write("{0,-15}", contact.Field<string>("city"));
+                Console.Write("{0,-15}", contact.Field<string>("state"));
+                Console.Write("{0,-15}", contact.Field<string>("zip"));
+                Console.Write("{0,-15}", contact.Field<string>("phone_number"));
+                Console.Write("{0,-15}", contact.Field<string>("email"));
+                Console.WriteLine();
+            }
+            Console.WriteLine();
         }
     }
 }
