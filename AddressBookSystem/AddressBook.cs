@@ -120,5 +120,29 @@ namespace AddressBookSystem
             }
             Console.WriteLine();
         }
+
+        /// <summary>
+        /// UC7
+        /// Prints the size by city.
+        /// </summary>
+        /// <param name="city">The city.</param>
+        /// <param name="table">The table.</param>
+        public void PrintSizeByCity(string city, DataTable table)
+        {
+            var record = table.AsEnumerable().Where(r => (r.Field<string>("city") == city)).Count();
+            Console.WriteLine($"Count of contacts with city {city}: " + record);
+        }
+
+        /// <summary>
+        /// UC7
+        /// Prints the state of the size by.
+        /// </summary>
+        /// <param name="state">The state.</param>
+        /// <param name="table">The table.</param>
+        public void PrintSizeByState(string state, DataTable table)
+        {
+            var record = table.AsEnumerable().Where(r => (r.Field<string>("state") == state)).Count();
+            Console.WriteLine($"Count of contacts with state {state}: " + record);
+        }
     }
 }
